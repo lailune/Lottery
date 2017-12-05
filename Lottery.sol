@@ -62,7 +62,8 @@ contract Lottery is owned, random{
             Return (msg.sender, msg.value - playCost);
         }
         
-	    games++;
+	games++;
+	
         //Важные проверки выполнены, теперь можно играть :)
         uint lot =  rand(1, 20); //Получаем число для игры
         
@@ -129,6 +130,10 @@ contract Lottery is owned, random{
     Пополнение призового фонда
     */
     function () payable{
+	    play();
+    }
+    
+    function deposit() payable{
         Deposit(msg.value);
     }
     
